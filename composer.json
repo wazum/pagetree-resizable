@@ -1,0 +1,15 @@
+{
+	"name": "wazum/pagetree-resizable",
+	"description": "Make the backend page tree horizontally resizable",
+	"require": {
+		"php": ">=7.0.0",
+		"typo3/cms-core": ">=8.7.0,<9.5.99"
+	},
+	"type": "typo3-cms-extension",
+	"version": "1.0.0",
+	"autoload": {
+		"psr-4": {
+			"Wazum\\PagetreeResizable\\": "Classes"
+		}
+	}
+}

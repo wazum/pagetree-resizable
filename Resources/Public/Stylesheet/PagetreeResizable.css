@@ -1,0 +1,27 @@
+.scaffold-content .ui-resizable {
+    position: relative;
+}
+
+.scaffold-content .ui-resizable-handle {
+    border: solid #dadada;
+    position: absolute;
+    font-size: .1px;
+    display: block;
+    touch-action: none;
+    -webkit-transform: translateX(50%);
+    transform: translateX(50%);
+}
+
+.scaffold-content .ui-resizable-e {
+    cursor: e-resize;
+    width: 15px;
+    right: -5px;
+    top: 0;
+    height: 100%;
+    border-width: 0;
+}
+
+.scaffold-content .ui-resizable-e:hover {
+    background: rgba(200, 200, 200, .5);
+}
+
