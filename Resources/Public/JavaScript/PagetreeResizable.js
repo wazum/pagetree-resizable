@@ -11,15 +11,17 @@ define([
                 create: function () {
                     var contentNavigation = $('.scaffold-content-navigation');
                     contentNavigation.find('.ui-resizable-e').dblclick(function (e) {
-                        var realWidth = $('#typo3-pagetree .x-panel-body ul').length ? $('#typo3-pagetree .x-panel-body ul').prop('scrollWidth') : $('#typo3-pagetree svg g.nodes-wrapper')[0].getBBox().width;
-                        if (contentNavigation.width() < realWidth) {
-                            var difference = (realWidth - contentNavigation.width()) + 10;
-                            var pageX = $(this).offset().left;
-                            var pageY = $(this).offset().top;
-                            $(this).trigger('mouseover')
-                                .trigger({type: 'mousedown', which: 1, pageX: pageX, pageY: pageY})
-                                .trigger({type: 'mousemove', which: 1, pageX: pageX + difference, pageY: pageY})
-                                .trigger({type: 'mouseup', which: 1, pageX: pageX + difference, pageY: pageY});
+                        if ($('#typo3-pagetree .x-panel-body ul').length || $('#typo3-pagetree svg g.nodes-wrapper').length) {
+                            var realWidth = $('#typo3-pagetree .x-panel-body ul').length ? $('#typo3-pagetree .x-panel-body ul').prop('scrollWidth') : $('#typo3-pagetree svg g.nodes-wrapper')[0].getBBox().width;
+                            if (contentNavigation.width() < realWidth) {
+                                var difference = (realWidth - contentNavigation.width()) + 10;
+                                var pageX = $(this).offset().left;
+                                var pageY = $(this).offset().top;
+                                $(this).trigger('mouseover')
+                                    .trigger({type: 'mousedown', which: 1, pageX: pageX, pageY: pageY})
+                                    .trigger({type: 'mousemove', which: 1, pageX: pageX + difference, pageY: pageY})
+                                    .trigger({type: 'mouseup', which: 1, pageX: pageX + difference, pageY: pageY});
+                            }
                         }
                     });
                 },
