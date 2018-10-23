@@ -12,7 +12,11 @@ You would have to scroll a loooooot!
 
 This extension adds a little bit of Javascript and CSS to allow any user to resize the container horizontally again.
 
-It works with TYPO3 8.7 LTS and TYPO3 9.5 LTS.
+The set width is then saved in the backend user preferences (`uc` field) as `Backend.PagetreeResizable.width`.
+
+If you double click on the resize handle, the container expands as wide as required for the content to fit.
+
+It works with TYPO3 8.7 LTS and TYPO3 9.5 LTS and I tested it with recent versions of Chrome, Firefox and Internet Explorer.
 
 # Installation
 
@@ -23,3 +27,4 @@ Require the package:
 
 Available on packagist:
 https://packagist.org/packages/wazum/pagetree-resizable
+
