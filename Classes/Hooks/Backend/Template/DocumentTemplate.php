@@ -35,7 +35,7 @@ class DocumentTemplate
             ');
         }
 
-        [$version] = explode('.', VersionNumberUtility::getCurrentTypo3Version());
+        list($version) = explode('.', VersionNumberUtility::getCurrentTypo3Version());
         if (\in_array((int)$version, [8, 9], true)) {
             $pageRenderer->addCssFile('EXT:pagetree_resizable/Resources/Public/Stylesheet/PagetreeResizable.css');
             $pageRenderer->loadRequireJsModule('TYPO3/CMS/PagetreeResizable/PagetreeResizable' . $version);
