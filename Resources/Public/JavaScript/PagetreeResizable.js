@@ -4,7 +4,18 @@ define([
 ], function ($) {
     'use strict';
     return {
-        run: function(Storage) {
+        run: function (Storage) {
+            function iframeOverlay(area) {
+                var ifr = area.find('iframe');
+                var d = $('<div class="resize-iframe-overlay"></div>');
+
+                area.append(d[0]);
+                d.css({position: 'absolute'});
+                d.css({top: ifr.position().top, left: 0});
+                d.height(ifr.height());
+                d.width('100%');
+            }
+
             $('.scaffold-content-navigation').resizable({
                 handles: 'e, w',
                 minWidth: 200,
@@ -29,27 +40,22 @@ define([
                     // we can't directly modify the CSS of the element, because the
                     // toggle for the whole page tree would not work anymore,
                     // so we need to inject new styles dynamically
-                    if ($('#pagetree-resize-styles').length === 0) {
+                    var stylesContainer = $('#pagetree-resize-styles');
+                    if (stylesContainer.length === 0) {
                         $('<div id="pagetree-resize-styles"/>').appendTo('body');
                     }
-                    $('#pagetree-resize-styles').html('<style>.scaffold-content-navigation-expanded .scaffold-content-navigation{width:' + ui.size.width + 'px} .scaffold-content-navigation-expanded .scaffold-content-module{left:' + ui.size.width + 'px}</style>');
+                    stylesContainer.html('<style>.scaffold-content-navigation-expanded .scaffold-content-navigation{width:' + ui.size.width + 'px} .scaffold-content-navigation-expanded .scaffold-content-module{left:' + ui.size.width + 'px}</style>');
                 },
                 // fix iframe problem
                 start: function () {
-                    var contentArea = $('.scaffold-content-navigation-expanded').find('.scaffold-content-module');
-                    var ifr = contentArea.find('iframe');
-                    var d = $('<div></div>');
-
-                    contentArea.append(d[0]);
-                    d[0].id = 'resize-overlay';
-                    d.css({position: 'absolute'});
-                    d.css({top: ifr.position().top, left: 0});
-                    d.height(ifr.height());
-                    d.width('100%');
+                    var parent = $('.scaffold-content-navigation-expanded');
+                    var contentArea = parent.find('.scaffold-content-module');
+                    iframeOverlay(contentArea);
+                    var navigationArea = parent.find('.scaffold-content-navigation');
+                    iframeOverlay(navigationArea);
                 },
                 stop: function (event, ui) {
-                    var contentArea = $('.scaffold-content-navigation-expanded').find('.scaffold-content-module');
-                    contentArea.find('#resize-overlay').remove();
+                    $('.resize-iframe-overlay').remove();
                     Storage.set('Backend.PagetreeResizable.width', ui.size.width);
                 }
             });
