@@ -24,8 +24,18 @@ class DocumentTemplate
         /** @var PageRenderer $pageRenderer */
         $pageRenderer = $parameters['pageRenderer'];
 
-        if ($width = $this->getUserPageTreeWidth()) {
-            $pageRenderer->addCssInlineBlock('wazum/pagetree-resizable', '
+        if ($parent->scriptID === 'rte/wizard/browselinks') {
+            if ($width = $this->getUserElementBrowserTreeWidth()) {
+                $pageRenderer->addCssInlineBlock('wazum/pagetree-resizable', '
+                .element-browser .element-browser-main .element-browser-main-sidebar {
+                    width: ' . $width . 'px;
+                }
+            ');
+            }
+        }
+        else {
+            if ($width = $this->getUserPageTreeWidth()) {
+                $pageRenderer->addCssInlineBlock('wazum/pagetree-resizable', '
                 .scaffold-content-navigation-expanded .scaffold-content-navigation {
                     width: ' . $width . 'px;
                 }
@@ -33,6 +43,7 @@ class DocumentTemplate
                     left: ' . $width . 'px;
                 }
             ');
+            }
         }
 
         list($version) = explode('.', VersionNumberUtility::getCurrentTypo3Version());
@@ -48,6 +59,14 @@ class DocumentTemplate
     protected function getUserPageTreeWidth(): int
     {
         return (int)($GLOBALS['BE_USER']->uc['Backend']['PagetreeResizable']['width'] ?? 0);
+    }
+
+    /**
+     * @return int
+     */
+    protected function getUserElementBrowserTreeWidth(): int
+    {
+        return (int)($GLOBALS['BE_USER']->uc['Backend']['PagetreeResizable']['Browser']['width'] ?? 0);
     }
 
 }

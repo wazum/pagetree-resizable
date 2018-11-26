@@ -1,7 +1,9 @@
+.element-browser-main .ui-resizable,
 .scaffold-content .ui-resizable {
     position: relative;
 }
 
+.element-browser-main .ui-resizable-handle,
 .scaffold-content .ui-resizable-handle {
     border: solid #dadada;
     position: absolute;
@@ -12,6 +14,7 @@
     transform: translateX(50%);
 }
 
+.element-browser-main .ui-resizable-e,
 .scaffold-content .ui-resizable-e {
     cursor: e-resize;
     width: 15px;
@@ -21,7 +24,16 @@
     border-width: 0;
 }
 
+.element-browser-main .ui-resizable-e:hover,
 .scaffold-content .ui-resizable-e:hover {
     background: rgba(200, 200, 200, .5);
 }
 
+@media (max-width: 639px) {
+	.element-browser-main .ui-resizable-handle {
+		display: none;
+	}
+	.element-browser .element-browser-main .element-browser-main-sidebar {
+		width: auto!important;
+	}
+}
