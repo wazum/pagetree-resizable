@@ -30,10 +30,13 @@
 }
 
 @media (max-width: 639px) {
-	.element-browser-main .ui-resizable-handle {
-		display: none;
-	}
-	.element-browser .element-browser-main .element-browser-main-sidebar {
-		width: auto!important;
-	}
+    .element-browser .element-browser-main .element-browser-main-sidebar {
+        width: auto;
+    }
+    #wizard-link-browse .element-browser-main .ui-resizable-handle {
+        display: none;
+    }
+    #wizard-link-browse .element-browser .element-browser-main .element-browser-main-sidebar {
+        width: auto !important;
+    }
 }
