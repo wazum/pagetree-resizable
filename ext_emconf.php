@@ -1,31 +1,18 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Backend page tree resizable',
+    'title' => 'TYPO3 CMS Backend page tree resizable',
     'description' => 'Make the backend page tree horizontally resizable',
     'category' => 'backend',
     'author' => 'Wolfgang Klinger',
     'author_email' => 'wolfgang@wazum.com',
-    'shy' => '',
-    'dependencies' => '',
-    'conflicts' => '',
-    'priority' => '',
-    'module' => '',
-    'state' => 'beta',
-    'internal' => '',
-    'uploadfolder' => 0,
-    'createDirs' => '',
-    'modify_tables' => '',
-    'clearCacheOnLoad' => 0,
-    'lockType' => '',
+    'state' => 'stable',
+    'clearCacheOnLoad' => true,
     'author_company' => 'wazum.com',
-    'version' => '1.2.0',
+    'version' => '1.2.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '8.7.0-9.5.99',
-        ],
-        'conflicts' => [],
-        'suggests' => [],
-    ],
-    'suggests' => [],
+            'typo3' => '8.7.0-10.2.99',
+        ]
+    ]
 ];

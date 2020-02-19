@@ -18,7 +18,7 @@ The set width is then saved in the backend user preferences (`uc` field) as `Bac
 
 If you double click on the resize handle, the container expands as wide as required for the content to fit.
 
-It works with TYPO3 8.7 LTS and TYPO3 9.5 LTS and I tested it with recent versions of Chrome, Firefox and Internet Explorer.
+It works with TYPO3 8.7 LTS, TYPO3 9.5 LTS and the upcoming TYPO3 10.2 and I tested it with recent versions of Chrome, Firefox and Internet Explorer.
 
 # Installation
 

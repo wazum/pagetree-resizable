@@ -8,12 +8,12 @@ use TYPO3\CMS\Core\Utility\VersionNumberUtility;
 
 /**
  * Class DocumentTemplate
+ *
  * @package Wazum\PagetreeResizable\Hooks\Backend\Template
  * @author Wolfgang Klinger <wolfgang@wazum.com>
  */
 class DocumentTemplate
 {
-
     /**
      * @param array $parameters
      * @param \TYPO3\CMS\Backend\Template\DocumentTemplate $parent
@@ -32,8 +32,7 @@ class DocumentTemplate
                 }
             ');
             }
-        }
-        else {
+        } else {
             if ($width = $this->getUserPageTreeWidth()) {
                 $pageRenderer->addCssInlineBlock('wazum/pagetree-resizable', '
                 .scaffold-content-navigation-expanded .scaffold-content-navigation {
@@ -47,9 +46,12 @@ class DocumentTemplate
         }
 
         list($version) = explode('.', VersionNumberUtility::getCurrentTypo3Version());
-        if (\in_array((int)$version, [8, 9], true)) {
-            $pageRenderer->addCssFile('EXT:pagetree_resizable/Resources/Public/Stylesheet/PagetreeResizable.css');
-            $pageRenderer->loadRequireJsModule('TYPO3/CMS/PagetreeResizable/PagetreeResizable' . $version);
+        $pageRenderer->addCssFile('EXT:pagetree_resizable/Resources/Public/Stylesheet/PagetreeResizable.css');
+        if ((int)$version === 8) {
+            $pageRenderer->loadRequireJsModule('TYPO3/CMS/PagetreeResizable/PagetreeResizable8');
+        } else {
+            // TYPO3 9, 10
+            $pageRenderer->loadRequireJsModule('TYPO3/CMS/PagetreeResizable/PagetreeResizable9');
         }
     }
 
@@ -68,5 +70,4 @@ class DocumentTemplate
     {
         return (int)($GLOBALS['BE_USER']->uc['Backend']['PagetreeResizable']['Browser']['width'] ?? 0);
     }
-
 }
