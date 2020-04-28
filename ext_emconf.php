@@ -9,10 +9,10 @@ $EM_CONF[$_EXTKEY] = [
     'state' => 'stable',
     'clearCacheOnLoad' => true,
     'author_company' => 'wazum.com',
-    'version' => '1.2.1',
+    'version' => '1.3.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '8.7.0-10.2.99',
+            'typo3' => '8.7.0-10.4.99',
         ]
     ]
 ];

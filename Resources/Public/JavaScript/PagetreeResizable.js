@@ -37,10 +37,10 @@ define([
                 isPageModule = true;
             }
             // Link browser
-            else if ($('.element-browser .element-browser-main .element-browser-main-sidebar').length) {
-                container = $('.element-browser .element-browser-main .element-browser-main-sidebar');
+            else if ($('.element-browser-main .element-browser-main-sidebar').length) {
+                container = $('.element-browser-main .element-browser-main-sidebar');
                 styles = function (width) {
-                    return '<style>.element-browser .element-browser-main .element-browser-main-sidebar{width:' + width + 'px}</style>';
+                    return '<style>.element-browser-main .element-browser-main-sidebar{width:' + width + 'px}</style>';
                 };
                 contentWidth = function () {
                     if ($('.element-browser-main-sidebar .element-browser-body ul.list-tree-root').length) {
