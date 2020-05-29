@@ -59,7 +59,7 @@ class DocumentTemplate
     protected function includeRequiredResources()
     {
         $pageRenderer = GeneralUtility::makeInstance(PageRenderer::class);
-        [$version] = explode('.', VersionNumberUtility::getCurrentTypo3Version());
+        list($version) = explode('.', VersionNumberUtility::getCurrentTypo3Version());
         $pageRenderer->addCssFile('EXT:pagetree_resizable/Resources/Public/Stylesheet/PagetreeResizable.css');
         if ((int)$version === 8) {
             $pageRenderer->loadRequireJsModule('TYPO3/CMS/PagetreeResizable/PagetreeResizable8');
@@ -100,7 +100,7 @@ class DocumentTemplate
             }
         }
 
-        [$version] = explode('.', VersionNumberUtility::getCurrentTypo3Version());
+        list($version) = explode('.', VersionNumberUtility::getCurrentTypo3Version());
         $pageRenderer->addCssFile('EXT:pagetree_resizable/Resources/Public/Stylesheet/PagetreeResizable.css');
         if ((int)$version === 8) {
             $pageRenderer->loadRequireJsModule('TYPO3/CMS/PagetreeResizable/PagetreeResizable8');
