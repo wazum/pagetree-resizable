@@ -11,5 +11,10 @@
     "psr-4": {
       "Wazum\\PagetreeResizable\\": "Classes"
     }
-  }
+  },
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "pagetree_resizeable"
+		}
+	}
 }
